@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // H5 做用户信息输入时（例如评论），
+    // 用户可能输入表情，
+    // 需要对输入内容转码提交接口，
+    // 接口返回时做进行编码
+    
+    
+    //字符串转base64
+    function encode(str) {
+      // 对字符串进行编码
+      var encode = encodeURI(str);
+      // 对编码的字符串转化base64
+      var base64 = btoa(encode);
+      return base64;
+    }
+
+    // base64转字符串
+    function decode(base64) {
+      // 对base64转编码
+      var decode = atob(base64);
+      // 编码转字符串
+      var str = decodeURI(decode);
+      return str;
+    }
+  </script>
+</body>
+
+</html>

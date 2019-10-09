@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+   
+  <h1>编码表链接</h1>
+  <a href="https://www.yuanzhexi.com/post-429.html">编码表1</a>
+  <a href="https://www.cnblogs.com/nifengs/p/5058020.html">编码表2</a>
+
+  <script>
+    // 用户评论时候会输如一些数学符号表情等,
+    // 我们要对表情的正常处理，就要在提交时重新编码base64， 显示时候编码utf8
+    // 这时候数学等特殊符号就无法正常显示
+    // 就需要我们正则处理替换（）
+    // 例如
+    export default function (str) {
+      let newStr = str.replace(/&cent;/g, '¢')
+    }
+  </script>
+</body>
+
+</html>

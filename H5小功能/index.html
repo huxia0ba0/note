@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>1. 弹出数字键盘</h3>
+
+  <!-- 有"#" "*"符号输入 -->
+  <input type="tel">
+
+  <!-- 纯数字 -->
+  <input pattern="\d*">
+
+  <p>-------------------------------------------------------------------</p>
+
+  <h3>2. 调用系统的某些功能</h3>
+
+  <!-- 拨号 -->
+  <a href="tel:10086">打电话给: 10086</a>
+
+  <!-- 发送短信 -->
+  <a href="sms:10086">发短信给: 10086</a>
+
+  <!-- 发送邮件 -->
+  <a href="mailto:1274648771@qq.com">发邮件给：1274648771@qq.com</a>
+
+  <!-- 选择照片或者拍摄照片 -->
+  <input type="file" accept="image/*">
+
+  <!-- 选择视频或者拍摄视频 -->
+  <input type="file" accept="video/*">
+
+  <!-- 多选 -->
+  <input type="file" multiple>
+
+  <p>-------------------------------------------------------------------</p>
+
+  <h3>3. 打开原生应用</h3>
+
+  <!-- 这种方式叫做URL Scheme，是一种协议,
+        一般用来访问APP或者APP中的某个功能/页面
+        （如唤醒APP后打开指定页面或者使用某些功能） -->
+  <!-- scheme://[path][?query]
+              |               |
+            应用标识       功能需要的参数 -->
+
+
+  <!-- 唤醒APP的条件是你的手机已经安装了该APP
+        某些浏览器会禁用此协议，比如微信内部浏览器（除非开了白名单） -->
+  <a href="weixin://">打开微信</a>
+  <a href="alipays://">打开支付宝</a>
+  <a href="alipays://platformapi/startapp?saId=10000007">打开支付宝的扫一扫功能</a>
+  <a href="alipays://platformapi/startapp?appId=60000002">打开支付宝的蚂蚁森林</a>
+
+  <p>-------------------------------------------------------------------</p>
+
+  <h3>4. 忽略自动识别</h3>
+  <!-- 忽略浏览器自动识别数字为电话号码 -->
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- 忽略浏览器自动识别邮箱账号 -->
+  <meta name="format-detection" content="email=no">
+  <!-- 当页面上的内容包含了手机号/邮箱等，会自动转换成可点击的链接 -->
+
+  <p>-------------------------------------------------------------------</p>
+
+  <h3>5. 禁止长按</h3>
+
+  <style>
+    /* 禁止长按图片保存 */
+    img {
+      -webkit-touch-callout: none;
+      pointer-events: none;
+      /* 像微信浏览器还是无法禁止，加上这行样式即可*/
+    }
+
+    /* 禁止长按选择文字 */
+    div {
+      -webkit-user-select: none;
+    }
+
+    /* 禁止长按呼出菜单 */
+    div {
+      -webkit-touch-callout: none;
+    }
+  </style>
+
+  <p>-------------------------------------------------------------------</p>
+
+  <h3>6. 滑动不顺畅，粘手</h3>
+
+  <!-- 一般出现在IOS设备中，自定义盒子使用了overflow: auto || scroll后出现的情况。 -->
+  <style>
+    div {
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+
+  <p>-------------------------------------------------------------------</p>
+
+  <h3>7.屏幕旋转为横屏时，字体大小会变</h3>
+
+  <style>
+    * {
+      -webkit-text-size-adjust: 100%;
+    }
+  </style>
+
+  <p>-------------------------------------------------------------------</p>
+
+  <h3>8.最简单的rem自适应</h3>
+  <style>
+    html {
+      font-size: calc(100vw / 3.75);
+    }
+
+    body {
+      font-size: .14rem;
+    }
+  </style>
+
+
+  <h3>9.滑动穿透</h3>
+
+  <!-- 当你想在出现遮罩的时候，锁住用户的滚动行为，你可以这么做 -->
+  <!-- 在遮罩上滑动的时候，是会穿透到父节点的，最简单的办法就是阻住默认行为： -->
+  <script>
+    document.querySelector(".mask").addEventListener("touchmove", event => {
+      event.preventDefault();
+    });
+
+
+    //  如果.content也有滚动条，那么只要阻止遮罩本身就行：
+    document.querySelector(".mask").addEventListener("touchmove", event => {
+      if (event.target.classList.contains("mask")) event.preventDefault();
+    });
+  </script>
+
+  <!-- 如果在vue中，你可以这么写： -->
+  <div class="mask" @touchumove.prevent></div>
+  
+  <!-- vue中content也有滚动条 -->
+  <div class="mask" @touchumove.self.prevent></div>
+
+  <div class="mask">
+    <div class="content">我是弹框</div>
+  </div>
+
+
+  <style>
+    .mask {
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .4);
+    }
+
+    .content {
+      padding: 20px;
+      background-color: #fff;
+      width: 300px;
+    }
+  </style>
+
+
+
+
+
+</body>
+
+</html>

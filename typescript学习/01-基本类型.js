@@ -48,6 +48,7 @@ var ccolor;
 var c1 = ccolor.green; // 1
 var c2 = ccolor['0']; // red
 console.log(c2, 'c2');
+// 非默认
 var yesterday;
 (function (yesterday) {
     yesterday[yesterday["hour"] = 1] = "hour";
@@ -55,8 +56,8 @@ var yesterday;
     yesterday[yesterday["uo"] = 4] = "uo";
 })(yesterday || (yesterday = {}));
 ;
-var yes1 = yesterday.hour;
-var yes2 = yesterday['0'];
+var yes1 = yesterday.hour; // 1
+var yes2 = yesterday['0']; //undefind
 console.log(yes1, yes2);
 // void
 // void 表示不是任何类型一般出现在函数中, 用来标记函数没有返回值

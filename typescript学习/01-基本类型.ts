@@ -131,3 +131,5 @@ let objeAB: A2&B2 = {...obja, ...objb};
 // 联合类型也是将多个类型合并为一个类型, 表示"或"的关系,用|连接多个类型:
 let ace1: string | number = "1";
 let ace2: string | number = 1;
+
+

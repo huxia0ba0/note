@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // vue项目中
+    // 1. npm i weixin-js-sdk
+    // 2. 引入
+    // import axios from 'axios'
+    // import wx from 'weixin-js-sdk'
+      //  以下同理
+
+
+    // 普通项目中
+    // 1.引入分享js     src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"
+    $(function () {
+      var url = location.href
+    // 2. 发送请求获取 appid timestamp 等
+      $.ajax({
+        url: 'https://wechat.tinsine.com/index/WeChat/actionWechatShare',
+        data: { url },
+        type: 'post',
+        success: function (info) {
+    // 3. 请求成功后 填写对应的配置项
+          var { appId, timestamp, nonceStr, signature } = info.data;
+          wx.config({
+            debug: false,
+            appId,
+            timestamp,
+            nonceStr,
+            signature,
+            jsApiList: [
+              'checkJsApi',
+              'onMenuShareTimeline',  
+              'onMenuShareAppMessage',
+              'onMenuShareQQ',
+              'onMenuShareWeibo'
+            ] // 其中包括分享qq 朋友圈 微信好友等
+          });
+          wx.ready(function () {
+            var link = window.location.href;
+            var protocol = window.location.protocol;
+            var host = window.location.host;
+            //分享朋友圈
+            wx.onMenuShareTimeline({
+              title: '万圣节换颜',
+              link: link,
+              imgUrl: "https://wechat.tinsine.com/static/changeface/image/halloween.jpg",// 自定义图标
+              success: function (res) {
+
+              }
+            });
+            //分享给好友
+            wx.onMenuShareAppMessage({
+              title: '万圣节换颜', // 分享标题
+              desc: '万圣节换颜了', // 分享描述
+              link: link, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+              imgUrl: "https://wechat.tinsine.com/static/changeface/image/halloween.jpg", // 自定义图标
+              type: 'link', // 分享类型,music、video或link，不填默认为link
+              dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+              success: function () {
+
+              }
+            })
+
+          });
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

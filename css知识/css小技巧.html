@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,62 +9,86 @@
   <style>
     /* 超出部分显示省略号 */
     /* 单行文本 */
-      .wrap {
-        overflow:hidden;/*超出部分隐藏*/
-        text-overflow:ellipsis;/*超出部分显示省略号*/
-        white-space:nowrap;/*规定段落中的文本不进行换行 */
-      }
-  
-        /* 多行文本 */
-      .wrap {
-          width: 100%;
-          overflow: hidden;
-          display: -webkit-box;    /*将对象作为弹性伸缩盒子模型显示  须结合的属性 */
-          -webkit-box-orient: vertical;   /*设置伸缩盒对象的子元素的排列方式  *必须结合的属性*/
-          -webkit-line-clamp: 3;   /*用来限制在一个块元素中显示的文本的行数*/
-          word-break: break-all;   /*让浏览器实现在任意位置的换行 *break-all为允许在单词内换行*/
-      }
+    .wrap {
+      overflow: hidden;
+      /*超出部分隐藏*/
+      text-overflow: ellipsis;
+      /*超出部分显示省略号*/
+      white-space: nowrap;
+      /*规定段落中的文本不进行换行 */
+    }
 
-      /* CSS实现文本两端对齐 */
-      .wrap {
-            text-align: justify;
-            text-justify: distribute-all-lines;  /*ie6-8 */
-            text-align-last: justify;   /*一个块或行的最后一行对齐方式 */
-            -moz-text-align-last: justify;
-            -webkit-text-align-last: justify;
-        }
-        
-        /* 禁止用户选择  抓取文字*/
+    /* 多行文本 */
+    .wrap {
+      width: 100%;
+      overflow: hidden;
+      display: -webkit-box;
+      /*将对象作为弹性伸缩盒子模型显示  须结合的属性 */
+      -webkit-box-orient: vertical;
+      /*设置伸缩盒对象的子元素的排列方式  *必须结合的属性*/
+      -webkit-line-clamp: 3;
+      /*用来限制在一个块元素中显示的文本的行数*/
+      word-break: break-all;
+      /*让浏览器实现在任意位置的换行 *break-all为允许在单词内换行*/
+    }
 
-        .wrap {
-          -webkit-touch-callout: none;
-          -webkit-user-select: none;
-          -khtml-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
+    /* CSS实现文本两端对齐 */
+    .wrap {
+      text-align: justify;
+      text-justify: distribute-all-lines;
+      /*ie6-8 */
+      text-align-last: justify;
+      /*一个块或行的最后一行对齐方式 */
+      -moz-text-align-last: justify;
+      -webkit-text-align-last: justify;
+    }
 
-        /* cursor属性 */
-        .wrap {
-          cursor:pointer;  /* 手指；*/
-          cursor:help;  /*箭头加问号；*/
-          cursor:wait; /*转圈圈；*/
-          cursor:move; /*移动光标；*/
-          cursor:crosshair; /*十字光标*/
-        }
+    /* 禁止用户选择  抓取文字*/
 
+    .wrap {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* cursor属性 */
+    .wrap {
+      cursor: pointer;
+      /* 手指；*/
+      cursor: help;
+      /*箭头加问号；*/
+      cursor: wait;
+      /*转圈圈；*/
+      cursor: move;
+      /*移动光标；*/
+      cursor: crosshair;
+      /*十字光标*/
+    }
 
 
   </style>
 </head>
+
 <body>
-  
+ 
 
   <script>
-    window. onbeforeunload = function () {
-      console.log(1)
+    var value = 1;
+
+    function foo() {
+      console.log(value);
     }
+
+    function bar() {
+      var value = 2;
+      foo();
+    }
+
+    bar()
   </script>
 </body>
+
 </html>

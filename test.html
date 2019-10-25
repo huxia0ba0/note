@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+
+// 添加cookie
+function addCookie(key,value,days) {
+    var now = new Date();
+    now.setDate(now.getDate() + days);
+    document.cookie = key+"="+value+"; expires="+now;
+}
+
+// 获取cookie
+function getCookie(key) {
+    var str = document.cookie;
+    if(!str) return null;
+    
+    var reg1 = new RegExp(key+"=([^;]+)$");
+    var reg2 = new RegExp(key+"=([^;]+);");
+    if(reg1.test(str)) {
+        return str.match(reg1)[1];
+    } else {
+        return str.match(reg2)[1];
+    }
+}
+
+addCookie('name', 'z3', 1)
+console.log(getCookie('name'))
+  </script>
+</body>
+
+</html>

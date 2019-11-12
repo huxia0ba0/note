@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    
+    <h1 style="color: red;">
+        (问题背景:图片等文件上传, 需要删除重新上传文件, 删除后上传了之前删除的同一个文件)
+    </h1>
+  <pre>
+    当我们使用input 上传文件时候
+    用change事件获取事件对象
+    e.target.files[0]获取文件
+    我们需要做重复上传同一个文件时,change事件不会触发
+    需要我们在上传完毕后,e.target.value = '';
+    清空以下value的值,解决这个问题
+  </pre>
+
+  <input type="file" accept="image/jpeg">
+
+  <script>
+  
+  document.querySelector('input').onchange = function () {
+    console.log(1)
+    // e.target.value = '';
+  }
+    
+  </script>
+</body>
+</html>

@@ -15,8 +15,8 @@
     // 用户可能输入表情，
     // 需要对输入内容转码提交接口，
     // 接口返回时做进行编码
-    
-    
+
+
     //字符串转base64
     function encode(str) {
       // 对字符串进行编码
@@ -34,6 +34,13 @@
       var str = decodeURI(decode);
       return str;
     }
+
+    // node环境下可以用Buffer
+    // 转base64
+    //var base64Str = Buffer.from('abc').toString("base64");
+    // 内容解码
+    // let commonContent = base64Str.replace(/\s/g, '+')
+    // commonContent = Buffer.from(commonContent, 'base64').toString()
   </script>
 </body>
 
